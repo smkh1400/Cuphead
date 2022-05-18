@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ProfileMenuController"
+            prefHeight="640.0" prefWidth="1080.0">
+    <top>
+        <HBox alignment="CENTER">
+            <Rectangle fx:id="avatar" height="100" width="100" />
+            <Button alignment="CENTER" text="refresh" onMouseClicked="#changeAvatar"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="change username"/>
+                <TextField fx:id="newUsername" promptText="newUsername"/>
+                <Button text="change" onMouseClicked="#changeUsername"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="change password"/>
+                <TextField fx:id="newPassword" promptText="newPassword"/>
+                <Button text="change" onMouseClicked="#changePassword"/>
+            </HBox>
+            <Button text="logout" onMouseClicked="#logout"/>
+            <Button text="delete account" onMouseClicked="#deleteAccount"/>
+            <Button text="back to main menu" onMouseClicked="#backToMainMenu"/>
+            <Label fx:id="message" text="" />
+        </VBox>
+    </center>
+</BorderPane>
