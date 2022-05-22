@@ -5,8 +5,6 @@ import javafx.util.Duration;
 import model.Airplane;
 import model.Bullet;
 
-import java.awt.*;
-
 public class BulletAnimation extends Transition {
 
     private Bullet bullet;
