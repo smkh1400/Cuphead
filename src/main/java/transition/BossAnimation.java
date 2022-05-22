@@ -21,10 +21,10 @@ public class BossAnimation extends Transition {
 
         if (Boss.getInstance() != null) {
 
-            if (frame == 5) {
+            if (Boss.getInstance().getShootCoolDown() == 5) {
+                Boss.getInstance().setShootCoolDown(0);
                 pause();
                 Boss.getInstance().getBossShootAnimation().play();
-                play();
             }
 
             Boss.getInstance().setBackGround("/transition/Boss/" + Math.min(frame, 12 - frame) + ".png");
@@ -41,6 +41,9 @@ public class BossAnimation extends Transition {
                 Boss.getInstance().getPane().getChildren().remove(Boss.getInstance());
                 Boss.removeInstance();
             }
+        }
+        if (v == 1) {
+            Boss.getInstance().setShootCoolDown(Boss.getInstance().getShootCoolDown() + 1);
         }
     }
 }

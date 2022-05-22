@@ -20,8 +20,8 @@ public class Bullet extends Rectangle {
         this.setBackGround("/view/frames/bullet.png");
     }
 
-    public void shoot(Boss boss, float damagePercentage) {
-        BulletAnimation bulletAnimation = new BulletAnimation(this, damagePercentage);
+    public void shoot() {
+        BulletAnimation bulletAnimation = new BulletAnimation(this);
         bulletAnimation.play();
     }
 

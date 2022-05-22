@@ -7,10 +7,12 @@ import javafx.scene.shape.Rectangle;
 import transition.BossAnimation;
 import transition.BossShootAnimation;
 
+
 public class Boss extends Rectangle {
 
     private BossAnimation bossAnimation;
     private BossShootAnimation bossShootAnimation;
+    private int shootCoolDown;
 
     private float health;
     private Pane pane;
@@ -21,6 +23,7 @@ public class Boss extends Rectangle {
         super(750, 250, 651 / 2, 509 / 2);
         this.health = health;
         this.pane = pane;
+        this.shootCoolDown = 0;
     }
 
     public static Boss getInstance() {
@@ -63,8 +66,8 @@ public class Boss extends Rectangle {
         return false;
     }
 
-    public void shootEgg() {
-        Egg egg = new Egg(1,2);// TODO find place of the start of shooting
+    public void shootEgg(int x, int y) {
+        Egg egg = new Egg(x,y);// TODO find place of the start of shooting
         pane.getChildren().add(egg);
         egg.shoot();
     }
@@ -77,8 +80,8 @@ public class Boss extends Rectangle {
         return health;
     }
 
-    public void getHit(float damagePercentage) {
-        this.health -= damagePercentage / 100;
+    public void getHit() {
+        this.health -= (Airplane.getInstance().getDamagePercentage()) / 100;
     }
 
     public Pane getPane() {
@@ -89,15 +92,23 @@ public class Boss extends Rectangle {
         this.bossAnimation = bossAnimation;
     }
 
-    public void setBossShootAnimation(BossShootAnimation bossShootAnimation) {
-        this.bossShootAnimation = bossShootAnimation;
-    }
-
     public BossAnimation getBossAnimation() {
         return bossAnimation;
     }
 
     public BossShootAnimation getBossShootAnimation() {
         return bossShootAnimation;
+    }
+
+    public void setBossShootAnimation(BossShootAnimation bossShootAnimation) {
+        this.bossShootAnimation = bossShootAnimation;
+    }
+
+    public int getShootCoolDown() {
+        return shootCoolDown;
+    }
+
+    public void setShootCoolDown(int shootCoolDown) {
+        this.shootCoolDown = shootCoolDown;
     }
 }

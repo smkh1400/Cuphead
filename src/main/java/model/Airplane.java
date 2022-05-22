@@ -87,12 +87,13 @@ public class Airplane extends Rectangle {
             coolDown = false;
             Bullet bullet = new Bullet((int) (this.getX() + this.getWidth()), (int) (this.getY() + (this.getHeight() / 2)), pane);
             pane.getChildren().add(bullet);
-            bullet.shoot(boss, this.damagePercentage);
+            bullet.shoot();
         }
     }
 
     public void getHit() {
         this.hearts -=  this.hitPercentage / 100;
+        System.out.println(this.hearts);
     }
 
     public void setBackGround(String URL) {
@@ -101,5 +102,13 @@ public class Airplane extends Rectangle {
 
     public float getHearts() {
         return hearts;
+    }
+
+    public float getDamagePercentage() {
+        return damagePercentage;
+    }
+
+    public float getHitPercentage() {
+        return hitPercentage;
     }
 }

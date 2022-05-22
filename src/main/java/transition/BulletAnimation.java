@@ -10,12 +10,10 @@ import model.MiniBoss;
 public class BulletAnimation extends Transition {
     private Bullet bullet;
     private int speed;
-    private float damagePercentage;
     private boolean resetCoolDown;
 
-    public BulletAnimation(Bullet bullet, float damagePercentage) {
+    public BulletAnimation(Bullet bullet) {
         this.bullet = bullet;
-        this.damagePercentage = damagePercentage;
         setCycleDuration(Duration.millis(3000));
         setCycleCount(1);
         this.speed = 10;
@@ -28,7 +26,7 @@ public class BulletAnimation extends Transition {
         if (Boss.getInstance() != null && bullet.hasCollision(Boss.getInstance()) && !bullet.isDone()) {
             bullet.getPane().getChildren().remove(bullet);
             bullet.done();
-            Boss.getInstance().getHit(damagePercentage);
+            Boss.getInstance().getHit();
         }
 
         for (int i = 0; i < 3; i++) {
@@ -36,7 +34,7 @@ public class BulletAnimation extends Transition {
             if (bullet.hasCollision(miniBoss) && !bullet.isDone()) {
                 bullet.getPane().getChildren().remove(bullet);
                 bullet.done();
-                miniBoss.getHit(damagePercentage);
+                miniBoss.getHit();
                 break;
             }
         }
@@ -47,7 +45,7 @@ public class BulletAnimation extends Transition {
         }
         if (v == 1) {
             bullet.getPane().getChildren().remove(bullet);
-            stop();
+            bullet.done();
         }
     }
 }
