@@ -5,6 +5,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import model.Airplane;
 import model.Boss;
+import transition.BossAnimation;
 
 public class GameMenuController {
 
@@ -42,6 +43,8 @@ public class GameMenuController {
         airplane.setBackGround("/view/frames/red.png");
         Boss.updateInstance(100, pane);//TODO configure numbers
         Boss boss = Boss.getInstance();
+        BossAnimation bossAnimation = new BossAnimation(boss);
+        bossAnimation.play();
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -74,6 +77,7 @@ public class GameMenuController {
             }
         });
         pane.getChildren().add(airplane);
+        pane.getChildren().add(boss);
         return pane;
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Boss extends Rectangle {
@@ -11,6 +13,7 @@ public class Boss extends Rectangle {
     private static Boss instance;
 
     private Boss(float health, Pane pane) {
+        super(750, 250, 651 / 2, 509 / 2);
         this.health = health;
         this.pane = pane;
     }
@@ -74,4 +77,23 @@ public class Boss extends Rectangle {
         egg.shoot();
     }
 
+    public void setBackGround(String URL) {
+        this.setFill(new ImagePattern(new Image(getClass().getResource(URL).toExternalForm())));
+    }
+
+    public float getHealth() {
+        return health;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    public void getHit(int damagePercentage) {
+        this.health -= 1 * (damagePercentage / 100);
+    }
+
+    public Pane getPane() {
+        return pane;
+    }
 }

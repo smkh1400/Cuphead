@@ -7,10 +7,10 @@ import javafx.scene.shape.Rectangle;
 
 public class Airplane extends Rectangle {
 
-    public float hearts;
-    public int hitPercentage;
-    public int damagePercentage;
-    public Pane pane;
+    private float hearts;
+    private int hitPercentage;
+    private int damagePercentage;
+    private Pane pane;
     public static boolean coolDown;
 
 
@@ -81,9 +81,9 @@ public class Airplane extends Rectangle {
     public void shoot(Boss boss) {
         if (coolDown) {
             coolDown = false;
-            Bullet bullet = new Bullet((int) (this.getX() + this.getWidth()), (int) (this.getY() + (this.getHeight() / 2)));
+            Bullet bullet = new Bullet((int) (this.getX() + this.getWidth()), (int) (this.getY() + (this.getHeight() / 2)), pane);
             pane.getChildren().add(bullet);
-            bullet.shoot(boss);
+            bullet.shoot(boss, this.damagePercentage);
         }
     }
 

@@ -16,6 +16,10 @@ public class Egg extends Rectangle {
 
     }
 
+    public boolean hasCollision(Rectangle boss) {
+        return boss.getBoundsInParent().intersects(this.getLayoutBounds());
+    }
+
     public void setBackGround(String URL) {
         this.setFill(new ImagePattern(new Image(getClass().getResource(URL).toExternalForm())));
     }
