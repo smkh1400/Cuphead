@@ -26,25 +26,20 @@ public class Boss extends Rectangle {
         instance = new Boss(health, pane);
     }
 
-    public void moveUp() {
-        if (!this.hitUp())
-            this.setY(this.getY() - 10);
-    }
-
-    public void moveDown() {
-        if (!this.hitDown())
-            this.setY(this.getY() + 10);
-    }
-
-    public void moveRight() {
-        if (!this.hitRight())
-            this.setX(this.getX() + 10);
-    }
-
-    public void moveLeft() {
-        if (!this.hitLeft()) {
-            this.setX(this.getX() - 10);
+    public boolean moveUp() {
+        if (!this.hitUp()) {
+            this.setY(this.getY() - 2);
+            return true;
         }
+        return false;
+    }
+
+    public boolean moveDown() {
+        if (!this.hitDown()) {
+            this.setY(this.getY() + 2);
+            return true;
+        }
+        return false;
     }
 
     private boolean hitUp() {
@@ -55,18 +50,6 @@ public class Boss extends Rectangle {
 
     private boolean hitDown() {
         if (this.getY() + this.getWidth() >= 640)
-            return true;
-        return false;
-    }
-
-    private boolean hitRight() {
-        if (this.getX() + this.getHeight() >= 1080)
-            return true;
-        return false;
-    }
-
-    private boolean hitLeft() {
-        if (this.getX() <= 0)
             return true;
         return false;
     }
@@ -85,12 +68,8 @@ public class Boss extends Rectangle {
         return health;
     }
 
-    public void setHealth(float health) {
-        this.health = health;
-    }
-
-    public void getHit(int damagePercentage) {
-        this.health -= 1 * (damagePercentage / 100);
+    public void getHit(float damagePercentage) {
+        this.health -= damagePercentage / 100;
     }
 
     public Pane getPane() {

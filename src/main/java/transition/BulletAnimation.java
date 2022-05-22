@@ -7,16 +7,13 @@ import model.Boss;
 import model.Bullet;
 
 public class BulletAnimation extends Transition {
-
-    private Boss boss;
     private Bullet bullet;
     private int speed;
-    private int damagePercentage;
+    private float damagePercentage;
     private boolean resetCoolDown;
 
-    public BulletAnimation(Bullet bullet, Boss boss, int damagePercentage) {
+    public BulletAnimation(Bullet bullet, float damagePercentage) {
         this.bullet = bullet;
-        this.boss = boss;
         this.damagePercentage = damagePercentage;
         setCycleDuration(Duration.millis(3000));
         setCycleCount(1);
@@ -27,10 +24,11 @@ public class BulletAnimation extends Transition {
     @Override
     protected void interpolate(double v) {
         bullet.setX(bullet.getX() + speed);
-        if (bullet.hasCollision(boss)) {
+        if (bullet.hasCollision(Boss.getInstance())) {
             bullet.getPane().getChildren().remove(bullet);
             stop();
-            boss.getHit(damagePercentage);
+            Boss.getInstance().getHit(damagePercentage);
+            System.out.println(Boss.getInstance().getHealth());
         }
 
         if (v * 36 >= 1 && !resetCoolDown) {

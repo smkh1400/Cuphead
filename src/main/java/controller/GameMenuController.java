@@ -10,9 +10,9 @@ import transition.BossAnimation;
 public class GameMenuController {
 
     public static Pane pane;
-    private static float hearts;
-    private static int hitPercentage;
-    private static int damagePercentage;
+    private static float hearts = 5;
+    private static float hitPercentage = 100;
+    private static float damagePercentage = 100;
 
     public static void setupDifficulty(int difficulty) {
         switch (difficulty) {
@@ -41,9 +41,9 @@ public class GameMenuController {
         Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane);
         Airplane airplane = Airplane.getInstance();
         airplane.setBackGround("/view/frames/red.png");
-        Boss.updateInstance(100, pane);//TODO configure numbers
+        Boss.updateInstance(25, pane);//TODO configure numbers
         Boss boss = Boss.getInstance();
-        BossAnimation bossAnimation = new BossAnimation(boss);
+        BossAnimation bossAnimation = new BossAnimation();
         bossAnimation.play();
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

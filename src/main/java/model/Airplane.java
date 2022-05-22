@@ -8,8 +8,8 @@ import javafx.scene.shape.Rectangle;
 public class Airplane extends Rectangle {
 
     private float hearts;
-    private int hitPercentage;
-    private int damagePercentage;
+    private float hitPercentage;
+    private float damagePercentage;
     private Pane pane;
     public static boolean coolDown;
 
@@ -20,11 +20,11 @@ public class Airplane extends Rectangle {
         return instance;
     }
 
-    public static void updateInstance(float hearts, int hitPercentage, int damagePercentage, Pane pane) {
+    public static void updateInstance(float hearts, float hitPercentage, float damagePercentage, Pane pane) {
         instance = new Airplane(hearts, hitPercentage, damagePercentage, pane);
     }
 
-    private Airplane(float hearts, int hitPercentage, int damagePercentage, Pane pane) {
+    private Airplane(float hearts, float hitPercentage, float damagePercentage, Pane pane) {
         super(20,20, 109, 91);
         this.hearts = hearts;
         this.hitPercentage = hitPercentage;
