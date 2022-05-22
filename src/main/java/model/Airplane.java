@@ -33,6 +33,10 @@ public class Airplane extends Rectangle {
         coolDown = true;
     }
 
+    public static void removeInstance() {
+        instance = null;
+    }
+
     public void moveUp() {
         if (!this.hitUp())
             this.setY(this.getY() - 10);
@@ -88,11 +92,14 @@ public class Airplane extends Rectangle {
     }
 
     public void getHit() {
-        this.hearts -= (this.hearts * this.hitPercentage ) / 100;
+        this.hearts -=  this.hitPercentage / 100;
     }
 
     public void setBackGround(String URL) {
         this.setFill(new ImagePattern(new Image(getClass().getResource(URL).toExternalForm())));
     }
 
+    public float getHearts() {
+        return hearts;
+    }
 }

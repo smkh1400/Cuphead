@@ -18,18 +18,21 @@ public class BossAnimation extends Transition {
     @Override
     protected void interpolate(double v) {
         int frame = (int) Math.floor(v * 10) + 1;
-        Boss.getInstance().setBackGround("/transition/Boss/" + Math.min(frame, 12 - frame) + ".png");
-        if (direction == 1) {
-            if (!Boss.getInstance().moveUp()) {
-                direction = 0;
+        if (Boss.getInstance() != null) {
+            Boss.getInstance().setBackGround("/transition/Boss/" + Math.min(frame, 12 - frame) + ".png");
+            if (direction == 1) {
+                if (!Boss.getInstance().moveUp()) {
+                    direction = 0;
+                }
+            } else if (direction == 0) {
+                if (!Boss.getInstance().moveDown()) {
+                    direction = 1;
+                }
             }
-        } else if (direction == 0) {
-            if (!Boss.getInstance().moveDown()) {
-                direction = 1;
+            if (Boss.getInstance().getHealth() <= 0) {
+                Boss.getInstance().getPane().getChildren().remove(Boss.getInstance());
+                Boss.removeInstance();
             }
-        }
-        if (Boss.getInstance().getHealth() <= 0) {
-            Boss.getInstance().getPane().getChildren().remove(Boss.getInstance());
         }
     }
 }

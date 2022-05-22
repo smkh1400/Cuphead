@@ -11,10 +11,12 @@ import java.util.ArrayList;
 public class Bullet extends Rectangle {
 
     private Pane pane;
+    private boolean done;
 
     public Bullet(int x, int y, Pane pane) {
         super(x, y, 35, 11);
         this.pane = pane;
+        this.done = false;
         this.setBackGround("/view/frames/bullet.png");
     }
 
@@ -33,5 +35,13 @@ public class Bullet extends Rectangle {
 
     public Pane getPane() {
         return pane;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void done() {
+        this.done = true;
     }
 }

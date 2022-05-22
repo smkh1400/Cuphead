@@ -31,18 +31,14 @@ public class Game extends Application {
         BorderPane mainMenuPane = FXMLLoader.load(mainMenuAddress);
         BorderPane profileMenuPane = FXMLLoader.load(profileMenuAddress);
         BorderPane settingsPane = FXMLLoader.load(settingsAddress);
-        Pane gameMenuPane = GameMenuController.createPane();
         Scene loginMenuScene = new Scene(loginMenuPane);
         Scene mainMenuScene = new Scene(mainMenuPane);
         Scene profileMenuScene = new Scene(profileMenuPane);
         Scene settingsScene = new Scene(settingsPane);
-        Scene gameMenuScene = new Scene(gameMenuPane);
-        gameMenuPane.getChildren().get(0).requestFocus();
         scenes.put("loginMenu", loginMenuScene);
         scenes.put("mainMenu", mainMenuScene);
         scenes.put("profileMenu", profileMenuScene);
         scenes.put("settings", settingsScene);
-        scenes.put("gameMenu", gameMenuScene);
         setScene("loginMenu");
     }
 
@@ -50,6 +46,10 @@ public class Game extends Application {
         Scene currentMenu = scenes.get(menuName);
         stage.setScene(currentMenu);
         stage.show();
+    }
+
+    public static HashMap<String, Scene> getScenes() {
+        return scenes;
     }
 
     public static void main(String[] args) {

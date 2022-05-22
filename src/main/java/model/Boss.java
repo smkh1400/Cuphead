@@ -26,6 +26,10 @@ public class Boss extends Rectangle {
         instance = new Boss(health, pane);
     }
 
+    public static void removeInstance() {
+        instance = null;
+    }
+
     public boolean moveUp() {
         if (!this.hitUp()) {
             this.setY(this.getY() - 2);

@@ -5,7 +5,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import model.Airplane;
 import model.Boss;
+import model.MiniBoss;
 import transition.BossAnimation;
+import transition.MiniBossAnimation;
 
 public class GameMenuController {
 
@@ -41,6 +43,15 @@ public class GameMenuController {
         Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane);
         Airplane airplane = Airplane.getInstance();
         airplane.setBackGround("/view/frames/red.png");
+        MiniBoss miniBoss1 = new MiniBoss(1600, 50, 12, pane);
+        MiniBoss miniBoss2 = new MiniBoss(1800, 50, 12, pane);
+        MiniBoss miniBoss3 = new MiniBoss(2000, 50, 12, pane);
+        MiniBossAnimation miniBossAnimation1 = new MiniBossAnimation(miniBoss1);
+        MiniBossAnimation miniBossAnimation2 = new MiniBossAnimation(miniBoss2);
+        MiniBossAnimation miniBossAnimation3 = new MiniBossAnimation(miniBoss3);
+        miniBossAnimation1.play();
+        miniBossAnimation2.play();
+        miniBossAnimation3.play();
         Boss.updateInstance(25, pane);//TODO configure numbers
         Boss boss = Boss.getInstance();
         BossAnimation bossAnimation = new BossAnimation();
@@ -78,6 +89,9 @@ public class GameMenuController {
         });
         pane.getChildren().add(airplane);
         pane.getChildren().add(boss);
+        pane.getChildren().add(miniBoss1);
+        pane.getChildren().add(miniBoss2);
+        pane.getChildren().add(miniBoss3);
         return pane;
     }
 }
