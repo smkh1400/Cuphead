@@ -16,9 +16,13 @@ public class Bullet extends Rectangle {
         this.setBackGround("/view/frames/bullet.png");
     }
 
-    public void shoot() {
-        BulletAnimation bulletAnimation = new BulletAnimation(this);
+    public void shoot(Boss boss) {
+        BulletAnimation bulletAnimation = new BulletAnimation(this, boss);
         bulletAnimation.play();
+    }
+
+    public boolean hasCollision(Rectangle boss) {
+        return boss.getBoundsInParent().intersects(this.getLayoutBounds());
     }
 
     public void setBackGround(String URL) {

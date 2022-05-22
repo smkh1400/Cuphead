@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import model.Airplane;
+import model.Boss;
 
 public class GameMenuController {
 
@@ -39,6 +40,8 @@ public class GameMenuController {
         Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane);
         Airplane airplane = Airplane.getInstance();
         airplane.setBackGround("/view/frames/red.png");
+        Boss.updateInstance(100, pane);//TODO configure numbers
+        Boss boss = Boss.getInstance();
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -59,7 +62,7 @@ public class GameMenuController {
                         airplane.moveLeft();
                         break;
                     case ("Space"):
-                        airplane.shoot();
+                        airplane.shoot(boss);
                         break;
                 }
             }

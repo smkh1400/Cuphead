@@ -78,12 +78,12 @@ public class Airplane extends Rectangle {
         return false;
     }
 
-    public void shoot() {
+    public void shoot(Boss boss) {
         if (coolDown) {
             coolDown = false;
             Bullet bullet = new Bullet((int) (this.getX() + this.getWidth()), (int) (this.getY() + (this.getHeight() / 2)));
             pane.getChildren().add(bullet);
-            bullet.shoot();
+            bullet.shoot(boss);
         }
     }
 
