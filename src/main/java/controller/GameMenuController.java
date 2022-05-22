@@ -7,6 +7,7 @@ import model.Airplane;
 import model.Boss;
 import model.MiniBoss;
 import transition.BossAnimation;
+import transition.BossShootAnimation;
 import transition.MiniBossAnimation;
 
 public class GameMenuController {
@@ -56,6 +57,9 @@ public class GameMenuController {
         Boss boss = Boss.getInstance();
         BossAnimation bossAnimation = new BossAnimation();
         bossAnimation.play();
+        boss.setBossAnimation(bossAnimation);
+        BossShootAnimation bossShootAnimation = new BossShootAnimation();
+        boss.setBossShootAnimation(bossShootAnimation);
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {

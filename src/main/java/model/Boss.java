@@ -4,8 +4,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import transition.BossAnimation;
+import transition.BossShootAnimation;
 
 public class Boss extends Rectangle {
+
+    private BossAnimation bossAnimation;
+    private BossShootAnimation bossShootAnimation;
 
     private float health;
     private Pane pane;
@@ -78,5 +83,21 @@ public class Boss extends Rectangle {
 
     public Pane getPane() {
         return pane;
+    }
+
+    public void setBossAnimation(BossAnimation bossAnimation) {
+        this.bossAnimation = bossAnimation;
+    }
+
+    public void setBossShootAnimation(BossShootAnimation bossShootAnimation) {
+        this.bossShootAnimation = bossShootAnimation;
+    }
+
+    public BossAnimation getBossAnimation() {
+        return bossAnimation;
+    }
+
+    public BossShootAnimation getBossShootAnimation() {
+        return bossShootAnimation;
     }
 }

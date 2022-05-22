@@ -18,7 +18,15 @@ public class BossAnimation extends Transition {
     @Override
     protected void interpolate(double v) {
         int frame = (int) Math.floor(v * 10) + 1;
+
         if (Boss.getInstance() != null) {
+
+            if (frame == 5) {
+                pause();
+                Boss.getInstance().getBossShootAnimation().play();
+                play();
+            }
+
             Boss.getInstance().setBackGround("/transition/Boss/" + Math.min(frame, 12 - frame) + ".png");
             if (direction == 1) {
                 if (!Boss.getInstance().moveUp()) {
