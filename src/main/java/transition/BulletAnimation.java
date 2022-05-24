@@ -27,6 +27,7 @@ public class BulletAnimation extends Transition {
             bullet.getPane().getChildren().remove(bullet);
             bullet.done();
             Boss.getInstance().getHit();
+            Boss.getInstance().updateHealthBarLength();
         }
 
         for (int i = 0; i < 3; i++) {
@@ -34,7 +35,7 @@ public class BulletAnimation extends Transition {
             if (bullet.hasCollision(miniBoss) && !bullet.isDone()) {
                 bullet.getPane().getChildren().remove(bullet);
                 bullet.done();
-                miniBoss.getHit();
+                miniBoss.getHitByBullet();
                 break;
             }
         }

@@ -39,8 +39,8 @@ public class MiniBoss extends Rectangle {
         return health;
     }
 
-    public void getHit() {
-        this.health -= Airplane.getInstance().getDamagePercentage() / 100;
+    public void getHitByBullet() {
+        this.health = this.health / 2;
     }
 
     public Pane getPane() {

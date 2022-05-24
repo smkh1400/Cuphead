@@ -2,6 +2,7 @@ package transition;
 
 import javafx.animation.Transition;
 import javafx.util.Duration;
+import model.Airplane;
 import model.Boss;
 
 public class BossAnimation extends Transition {
@@ -20,6 +21,9 @@ public class BossAnimation extends Transition {
         int frame = (int) Math.floor(v * 10) + 1;
 
         if (Boss.getInstance() != null) {
+
+            if (Boss.getInstance().hasCollision(Airplane.getInstance()))
+                Airplane.getInstance().getHit(); // TODO set cool down for it
 
             if (Boss.getInstance().getShootCoolDown() == 5) {
                 Boss.getInstance().setShootCoolDown(0);
@@ -42,8 +46,10 @@ public class BossAnimation extends Transition {
                 Boss.removeInstance();
             }
         }
+
         if (v == 1) {
-            Boss.getInstance().setShootCoolDown(Boss.getInstance().getShootCoolDown() + 1);
+            if (Boss.getInstance() != null)
+                Boss.getInstance().setShootCoolDown(Boss.getInstance().getShootCoolDown() + 1);
         }
     }
 }

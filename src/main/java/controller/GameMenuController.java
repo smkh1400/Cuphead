@@ -1,8 +1,12 @@
 package controller;
 
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import model.Airplane;
 import model.Boss;
 import model.MiniBoss;
@@ -41,7 +45,11 @@ public class GameMenuController {
         Pane pane = new Pane();
         pane.setPrefHeight(640);
         pane.setPrefWidth(1080);
-        Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane);
+        Text heartText = new Text();
+        heartText.setText("x" + hearts);
+        heartText.setX(60);
+        heartText.setY(630);
+        Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane, heartText);
         Airplane airplane = Airplane.getInstance();
         airplane.setBackGround("/view/frames/red.png");
         MiniBoss miniBoss1 = new MiniBoss(1600, 50, 12, pane);
@@ -53,13 +61,31 @@ public class GameMenuController {
         miniBossAnimation1.play();
         miniBossAnimation2.play();
         miniBossAnimation3.play();
-        Boss.updateInstance(25, pane);//TODO configure numbers
+        Rectangle backgroundHealthBar = new Rectangle();
+        backgroundHealthBar.setX(420);
+        backgroundHealthBar.setY(618);
+        backgroundHealthBar.setWidth(220);
+        backgroundHealthBar.setHeight(15);
+        backgroundHealthBar.setStyle("-fx-fill: black");
+        Rectangle healthBar = new Rectangle();
+        healthBar.setX(430);
+        healthBar.setY(620);
+        healthBar.setWidth(200);
+        healthBar.setHeight(10);
+        healthBar.setStyle("-fx-fill: red");
+        Text healthText = new Text();
+        healthText.setX(650);
+        healthText.setY(630);
+        healthText.setText(String.valueOf(25));
+        Boss.updateInstance(25, pane, healthBar, healthText);//TODO configure numbers
         Boss boss = Boss.getInstance();
         BossAnimation bossAnimation = new BossAnimation();
         bossAnimation.play();
         boss.setBossAnimation(bossAnimation);
         BossShootAnimation bossShootAnimation = new BossShootAnimation();
         boss.setBossShootAnimation(bossShootAnimation);
+        Rectangle heart = new Rectangle(10, 600,79 / 2, 78 / 2);
+        heart.setFill(new ImagePattern(new Image(String.valueOf(Boss.getInstance().getClass().getResource("/view/frames/Heart.png")))));
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -96,6 +122,11 @@ public class GameMenuController {
         pane.getChildren().add(miniBoss1);
         pane.getChildren().add(miniBoss2);
         pane.getChildren().add(miniBoss3);
+        pane.getChildren().add(backgroundHealthBar);
+        pane.getChildren().add(healthBar);
+        pane.getChildren().add(healthText);
+        pane.getChildren().add(heart);
+        pane.getChildren().add(heartText);
         return pane;
     }
 }

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class Airplane extends Rectangle {
 
@@ -11,6 +12,7 @@ public class Airplane extends Rectangle {
     private float hitPercentage;
     private float damagePercentage;
     private Pane pane;
+    private Text heartText;
     public static boolean coolDown;
 
 
@@ -20,16 +22,17 @@ public class Airplane extends Rectangle {
         return instance;
     }
 
-    public static void updateInstance(float hearts, float hitPercentage, float damagePercentage, Pane pane) {
-        instance = new Airplane(hearts, hitPercentage, damagePercentage, pane);
+    public static void updateInstance(float hearts, float hitPercentage, float damagePercentage, Pane pane, Text heartText) {
+        instance = new Airplane(hearts, hitPercentage, damagePercentage, pane, heartText);
     }
 
-    private Airplane(float hearts, float hitPercentage, float damagePercentage, Pane pane) {
+    private Airplane(float hearts, float hitPercentage, float damagePercentage, Pane pane, Text heartText) {
         super(20,20, 109, 91);
         this.hearts = hearts;
         this.hitPercentage = hitPercentage;
         this.damagePercentage = damagePercentage;
         this.pane = pane;
+        this.heartText = heartText;
         coolDown = true;
     }
 
@@ -93,7 +96,7 @@ public class Airplane extends Rectangle {
 
     public void getHit() {
         this.hearts -=  this.hitPercentage / 100;
-        System.out.println(this.hearts);
+        this.updateHeartText();
     }
 
     public void setBackGround(String URL) {
@@ -110,5 +113,9 @@ public class Airplane extends Rectangle {
 
     public float getHitPercentage() {
         return hitPercentage;
+    }
+
+    public void updateHeartText() {
+        this.heartText.setText("x" + hearts);
     }
 }
