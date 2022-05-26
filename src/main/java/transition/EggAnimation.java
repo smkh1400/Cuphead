@@ -1,5 +1,6 @@
 package transition;
 
+import controller.GameMenuController;
 import javafx.animation.Transition;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -14,6 +15,7 @@ public class EggAnimation extends Transition {
     private int speed;
 
     public EggAnimation(Egg egg) {
+        GameMenuController.animations.put("eggAnimation", this);
         this.egg = egg;
         setCycleDuration(Duration.millis(10));
         setCycleCount(-1);

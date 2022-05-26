@@ -24,9 +24,10 @@ public class BossAnimation extends Transition {
         int frame = (int) Math.floor(v * 10) + 1;
 
         if (Boss.getInstance() != null && Airplane.getInstance() != null) {
-
             if (Boss.getInstance().hasCollision(Airplane.getInstance()))
                 Airplane.getInstance().getHit(); // TODO set cool down for it
+        }
+        if (Boss.getInstance() != null && Airplane.getInstance() != null) {
 
             if (Boss.getInstance().getShootCoolDown() == 5) {
                 Boss.getInstance().setShootCoolDown(0);
@@ -48,6 +49,8 @@ public class BossAnimation extends Transition {
                 Boss.getInstance().getPane().getChildren().remove(Boss.getInstance());
                 Boss.removeInstance();
                 GameMenuController.score += 100 + Airplane.getInstance().getHearts() * 2;
+                Airplane.removeInstance();
+                this.stop();
                 Game.getScenes().remove("gameMenu");
                 EndMenuController.score = GameMenuController.score;
                 EndMenuController.message = "You Win";

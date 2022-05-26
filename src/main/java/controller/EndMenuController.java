@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.animation.Transition;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.text.Text;
 import view.Game;
 
 import javax.swing.*;
+import java.util.Map;
 
 public class EndMenuController {
 
@@ -19,6 +21,9 @@ public class EndMenuController {
     public static int score;
 
     public static void createPane() {
+        for (Map.Entry<String, Transition> set : GameMenuController.animations.entrySet()) {
+            set.getValue().stop();
+        }
         BorderPane borderPane = new BorderPane();
         borderPane.setPrefHeight(640);
         borderPane.setPrefWidth(1080);

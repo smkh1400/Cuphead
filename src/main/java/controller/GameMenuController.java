@@ -1,5 +1,7 @@
 package controller;
 
+import com.sun.org.apache.bcel.internal.generic.NameSignatureInstruction;
+import javafx.animation.Transition;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -18,10 +20,13 @@ import transition.BossShootAnimation;
 import transition.MiniBossAnimation;
 
 import java.io.File;
+import java.util.HashMap;
 
 public class GameMenuController {
 
     //TODO make this class singleton
+
+    public static HashMap<String, Transition> animations = new HashMap<>();
 
     public static String username;
     public static int score;
@@ -59,9 +64,13 @@ public class GameMenuController {
         heartText.setText("x" + hearts);
         heartText.setX(60);
         heartText.setY(630);
+
+
         Airplane.updateInstance(hearts, hitPercentage, damagePercentage, pane, heartText);
         Airplane airplane = Airplane.getInstance();
         airplane.setBackGround("/view/frames/red.png");
+
+
         MiniBoss miniBoss1 = new MiniBoss(1600, 50, 12, pane);
         MiniBoss miniBoss2 = new MiniBoss(1800, 50, 12, pane);
         MiniBoss miniBoss3 = new MiniBoss(2000, 50, 12, pane);
@@ -71,22 +80,31 @@ public class GameMenuController {
         miniBossAnimation1.play();
         miniBossAnimation2.play();
         miniBossAnimation3.play();
+
+        animations.put("miniBoss1", miniBossAnimation1);
+        animations.put("miniBoss2", miniBossAnimation2);
+        animations.put("miniBoss3", miniBossAnimation3);
+
         Rectangle backgroundHealthBar = new Rectangle();
         backgroundHealthBar.setX(420);
         backgroundHealthBar.setY(618);
         backgroundHealthBar.setWidth(220);
         backgroundHealthBar.setHeight(15);
         backgroundHealthBar.setStyle("-fx-fill: black");
+
         Rectangle healthBar = new Rectangle();
         healthBar.setX(430);
         healthBar.setY(620);
         healthBar.setWidth(200);
         healthBar.setHeight(10);
         healthBar.setStyle("-fx-fill: red");
+
         Text healthText = new Text();
         healthText.setX(650);
         healthText.setY(630);
         healthText.setText(String.valueOf(25));
+
+
         Boss.updateInstance(25, pane, healthBar, healthText);//TODO configure numbers
         Boss boss = Boss.getInstance();
         BossAnimation bossAnimation = new BossAnimation();
@@ -94,6 +112,10 @@ public class GameMenuController {
         boss.setBossAnimation(bossAnimation);
         BossShootAnimation bossShootAnimation = new BossShootAnimation();
         boss.setBossShootAnimation(bossShootAnimation);
+
+        animations.put("bossAnimation", bossAnimation);
+        animations.put("bossShootAnimation", bossShootAnimation);
+
         Rectangle heart = new Rectangle(10, 600,79 / 2, 78 / 2);
         heart.setFill(new ImagePattern(new Image(String.valueOf(Boss.getInstance().getClass().getResource("/view/frames/Heart.png")))));
         airplane.setOnKeyPressed(new EventHandler<KeyEvent>() {

@@ -1,5 +1,6 @@
 package transition;
 
+import controller.GameMenuController;
 import javafx.animation.Transition;
 import javafx.util.Duration;
 import model.Airplane;
@@ -13,6 +14,7 @@ public class BulletAnimation extends Transition {
     private boolean resetCoolDown;
 
     public BulletAnimation(Bullet bullet) {
+        GameMenuController.animations.put("bulletAnimation", this);
         this.bullet = bullet;
         setCycleDuration(Duration.millis(3000));
         setCycleCount(1);

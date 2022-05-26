@@ -101,10 +101,10 @@ public class Airplane extends Rectangle {
         this.hearts -=  this.hitPercentage / 100;
         this.updateHeartText();
 
-        if (this.getHearts() == 0) {
+        if (this.getHearts() <= 0) {
             this.pane.getChildren().remove(Airplane.getInstance());
             Airplane.removeInstance();
-            Game.getScenes().remove("gameMenu");
+            Boss.removeInstance();
             EndMenuController.message = "You lose";
             EndMenuController.score = GameMenuController.score;
             // TODO save score in database
