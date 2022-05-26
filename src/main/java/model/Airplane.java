@@ -1,10 +1,13 @@
 package model;
 
+import controller.EndMenuController;
+import controller.GameMenuController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import view.Game;
 
 public class Airplane extends Rectangle {
 
@@ -97,6 +100,17 @@ public class Airplane extends Rectangle {
     public void getHit() {
         this.hearts -=  this.hitPercentage / 100;
         this.updateHeartText();
+
+        if (this.getHearts() == 0) {
+            this.pane.getChildren().remove(Airplane.getInstance());
+            Airplane.removeInstance();
+            Game.getScenes().remove("gameMenu");
+            EndMenuController.message = "You lose";
+            EndMenuController.score = GameMenuController.score;
+            // TODO save score in database
+            EndMenuController.createPane();
+        }
+
     }
 
     public void setBackGround(String URL) {

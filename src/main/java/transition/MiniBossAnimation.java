@@ -37,13 +37,6 @@ public class MiniBossAnimation extends Transition {
             miniBoss.getPane().getChildren().add(miniBoss);
             MiniBoss.getMiniBosses().add(miniBoss);
             Airplane.getInstance().getHit();
-            System.out.println(Airplane.getInstance().getHearts());
-        }
-
-        if (Airplane.getInstance() != null && Airplane.getInstance().getHearts() == 0) {
-            miniBoss.getPane().getChildren().remove(Airplane.getInstance());
-            Airplane.removeInstance();
-            System.out.println("You Lose");
         }
 
     }

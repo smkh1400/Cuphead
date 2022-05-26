@@ -96,6 +96,10 @@ public class Game extends Application {
         return scenes;
     }
 
+    public static void addScene(String name, Scene scene) {
+        scenes.put(name, scene);
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

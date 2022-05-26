@@ -1,5 +1,6 @@
 package model;
 
+import controller.GameMenuController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
@@ -86,6 +87,7 @@ public class Boss extends Rectangle {
     }
 
     public void getHit() {
+        GameMenuController.score += 5;
         this.health -= (Airplane.getInstance().getDamagePercentage()) / 100;
     }
 

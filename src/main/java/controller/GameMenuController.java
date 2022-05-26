@@ -21,6 +21,10 @@ import java.io.File;
 
 public class GameMenuController {
 
+    //TODO make this class singleton
+
+    public static String username;
+    public static int score;
     public static Pane pane;
     private static float hearts = 5;
     private static float hitPercentage = 100;
@@ -47,6 +51,7 @@ public class GameMenuController {
     }
 
     public static Pane createPane() {
+        score = 0;
         Pane pane = new Pane();
         pane.setPrefHeight(640);
         pane.setPrefWidth(1080);
@@ -122,6 +127,15 @@ public class GameMenuController {
                 airplane.setBackGround("/view/frames/red.png");
             }
         });
+
+        Rectangle background = new Rectangle(1080, 640);
+        background.setFill(new ImagePattern(new Image("/view/frames/background.png")));
+
+        Rectangle sky = new Rectangle(1080, 200);
+        sky.setFill(new ImagePattern(new Image("/view/frames/sky.png")));
+
+        pane.getChildren().add(background);
+        pane.getChildren().add(sky);
         pane.getChildren().add(airplane);
         pane.getChildren().add(boss);
         pane.getChildren().add(miniBoss1);

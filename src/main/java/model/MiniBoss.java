@@ -1,6 +1,7 @@
 package model;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import controller.GameMenuController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
@@ -40,6 +41,7 @@ public class MiniBoss extends Rectangle {
     }
 
     public void getHitByBullet() {
+        GameMenuController.score += 1;
         this.health = this.health / 2;
     }
 

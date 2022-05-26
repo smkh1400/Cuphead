@@ -10,11 +10,21 @@ public class MainMenuController {
 
     public static String username;
 
-
-    public void startNewGame() {
+    public static void startNewGameFromEndMenu() {
         Pane gameMenuPane = GameMenuController.createPane();
         Scene gameMenuScene = new Scene(gameMenuPane);
-        gameMenuPane.getChildren().get(0).requestFocus();
+        gameMenuPane.getChildren().get(2).requestFocus();
+        Game.getScenes().remove("gameMenu");
+        Game.getScenes().put("gameMenu", gameMenuScene);
+        Game.setScene("gameMenu");
+    }
+
+    public void startNewGame() {
+        GameMenuController.username = username;
+        Pane gameMenuPane = GameMenuController.createPane();
+        Scene gameMenuScene = new Scene(gameMenuPane);
+        gameMenuPane.getChildren().get(2).requestFocus();
+        Game.getScenes().remove("gameMenu");
         Game.getScenes().put("gameMenu", gameMenuScene);
         Game.setScene("gameMenu");
     }
@@ -35,3 +45,4 @@ public class MainMenuController {
         Game.setScene("settings");
     }
 }
+;

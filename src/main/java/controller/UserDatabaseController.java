@@ -69,6 +69,7 @@ public class UserDatabaseController {
         HashMap<String, String> userNew = new HashMap<>();
         userNew.put("username", username);
         userNew.put("password", password);
+        userNew.put("score", "0");
         users.add(userNew);
         this.updateDatabase(users);
     }
@@ -82,12 +83,24 @@ public class UserDatabaseController {
         this.updateDatabase(users);
     }
 
-//    public void changeNickname(String username, String newNickname) {
-//        ArrayList<HashMap<String, String>> users = loadDatabase();
-//        int userIndex = this.getUserIndexByUsername(username);
-//        users.get(userIndex).put("nickname", newNickname);
-//        this.updateDatabase(users);
-//    }
+    public int getScore(String username) {
+        ArrayList<HashMap<String, String >> users = loadDatabase();
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).get("username").equals(username)) {
+                return Integer.parseInt(users.get(i).get("score"));
+            }
+        }
+        return 0;
+    }
+
+    public void setScore(String username, int newScore) {
+        ArrayList<HashMap<String , String>> users = loadDatabase();
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).get("username").equals(username)) {
+                users.get(i).put("score", String.valueOf(newScore));
+            }
+        }
+    }
 
     public void changePassword(String username, String newPassword) {
         ArrayList<HashMap<String, String>> users = loadDatabase();
