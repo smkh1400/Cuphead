@@ -9,6 +9,7 @@ public class SettingsController {
     public CheckBox easy;
     public CheckBox medium;
     public CheckBox hard;
+    public CheckBox sound;
 
     public void setEasy() {
         medium.setSelected(false);
@@ -35,7 +36,11 @@ public class SettingsController {
     }
 
     public void setOn() {
-        //TODO add music and turn it on or off
+        if (!sound.isSelected()) {
+            Game.turnOffAudio();
+        } else {
+            Game.turnOnAudio("otherMenu");
+        }
     }
 
     public void backToMainMenu() {

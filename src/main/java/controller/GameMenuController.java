@@ -4,6 +4,9 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -13,6 +16,8 @@ import model.MiniBoss;
 import transition.BossAnimation;
 import transition.BossShootAnimation;
 import transition.MiniBossAnimation;
+
+import java.io.File;
 
 public class GameMenuController {
 
