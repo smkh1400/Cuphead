@@ -88,6 +88,7 @@ public class Boss extends Rectangle {
 
     public void getHit() {
         GameMenuController.score += 5;
+        GameMenuController.updateScore();
         this.health -= (Airplane.getInstance().getDamagePercentage()) / 100;
     }
 

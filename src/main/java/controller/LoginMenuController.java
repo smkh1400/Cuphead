@@ -22,6 +22,10 @@ public class LoginMenuController {
     public void registerPlayer() {
         if (userExisted())
             message.setText("Username existed");
+        else if (username.getText().length() == 0)
+            message.setText("Invalid Username");
+        else if (password.getText().length() == 0)
+            message.setText("Invalid password");
         else {
             UserDatabaseController.getInstance().addUser(username.getText(), password.getText());
             startMenu(username.getText());

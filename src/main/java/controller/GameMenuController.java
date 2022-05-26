@@ -5,6 +5,7 @@ import javafx.animation.Transition;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -18,9 +19,11 @@ import model.MiniBoss;
 import transition.BossAnimation;
 import transition.BossShootAnimation;
 import transition.MiniBossAnimation;
+import view.Game;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 
 public class GameMenuController {
 
@@ -30,6 +33,7 @@ public class GameMenuController {
 
     public static String username;
     public static int score;
+    public static Text scoreText = new Text();
     public static Pane pane;
     private static float hearts = 5;
     private static float hitPercentage = 100;
@@ -156,6 +160,21 @@ public class GameMenuController {
         Rectangle sky = new Rectangle(1080, 200);
         sky.setFill(new ImagePattern(new Image("/view/frames/sky.png")));
 
+        Rectangle pause = new Rectangle(1030,590, 50 , 50);
+        pause.setFill(new ImagePattern(new Image("/view/frames/pause.png")));
+        pause.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                PauseMenuController.createPane();
+            }
+        });
+
+
+        scoreText.setStyle("-fx-font-size: 18");
+        updateScore();
+        scoreText.setX(900);
+        scoreText.setY(630);
+
         pane.getChildren().add(background);
         pane.getChildren().add(sky);
         pane.getChildren().add(airplane);
@@ -168,6 +187,13 @@ public class GameMenuController {
         pane.getChildren().add(healthText);
         pane.getChildren().add(heart);
         pane.getChildren().add(heartText);
+        pane.getChildren().add(pause);
+        pane.getChildren().add(scoreText);
+
         return pane;
+    }
+
+    public static void updateScore() {
+        scoreText.setText(String.valueOf(score));
     }
 }

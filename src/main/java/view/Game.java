@@ -5,9 +5,12 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
@@ -18,10 +21,11 @@ import java.util.HashMap;
 
 public class Game extends Application {
 
+    static BorderPane sPane;
     static HashMap<String, Scene> scenes = new HashMap<>();
     static HashMap<String, AudioClip> audios = new HashMap<>();
     static Stage stage;
-    static boolean isAudioOn = true;
+    public static boolean isAudioOn = true;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -35,6 +39,9 @@ public class Game extends Application {
         BorderPane mainMenuPane = FXMLLoader.load(mainMenuAddress);
         BorderPane profileMenuPane = FXMLLoader.load(profileMenuAddress);
         BorderPane settingsPane = FXMLLoader.load(settingsAddress);
+
+        sPane = settingsPane;
+
         Scene loginMenuScene = new Scene(loginMenuPane);
         Scene mainMenuScene = new Scene(mainMenuPane);
         Scene profileMenuScene = new Scene(profileMenuPane);
@@ -83,12 +90,24 @@ public class Game extends Application {
 
     public static void turnOffAudio() {
         isAudioOn = false;
+
+        VBox v = (VBox) sPane.getCenter();
+        HBox h = (HBox) v.getChildren().get(1);
+        CheckBox checkBox = (CheckBox) h.getChildren().get(1);
+        checkBox.setSelected(isAudioOn);
+
         audios.get("otherMenu").stop();
         audios.get("gameMenu").stop();
     }
 
     public static void turnOnAudio(String menuName) {
         isAudioOn = true;
+
+        VBox v = (VBox) sPane.getCenter();
+        HBox h = (HBox) v.getChildren().get(1);
+        CheckBox checkBox = (CheckBox) h.getChildren().get(1);
+        checkBox.setSelected(isAudioOn);
+
         audios.get(menuName).play();
     }
 

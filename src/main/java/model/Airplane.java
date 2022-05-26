@@ -2,6 +2,7 @@ package model;
 
 import controller.EndMenuController;
 import controller.GameMenuController;
+import controller.UserDatabaseController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
@@ -107,7 +108,10 @@ public class Airplane extends Rectangle {
             Boss.removeInstance();
             EndMenuController.message = "You lose";
             EndMenuController.score = GameMenuController.score;
-            // TODO save score in database
+            int highScore = UserDatabaseController.getInstance().getScore(GameMenuController.username);
+            if (highScore < GameMenuController.score) {
+                UserDatabaseController.getInstance().setScore(GameMenuController.username, GameMenuController.score);
+            }
             EndMenuController.createPane();
         }
 

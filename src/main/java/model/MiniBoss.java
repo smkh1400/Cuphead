@@ -42,7 +42,8 @@ public class MiniBoss extends Rectangle {
 
     public void getHitByBullet() {
         GameMenuController.score += 1;
-        this.health = this.health / 2;
+        GameMenuController.updateScore();
+        this.health -= 6;
     }
 
     public Pane getPane() {

@@ -2,6 +2,7 @@ package transition;
 
 import controller.EndMenuController;
 import controller.GameMenuController;
+import controller.UserDatabaseController;
 import javafx.animation.Transition;
 import javafx.util.Duration;
 import model.Airplane;
@@ -49,12 +50,16 @@ public class BossAnimation extends Transition {
                 Boss.getInstance().getPane().getChildren().remove(Boss.getInstance());
                 Boss.removeInstance();
                 GameMenuController.score += 100 + Airplane.getInstance().getHearts() * 2;
+                GameMenuController.updateScore();
                 Airplane.removeInstance();
                 this.stop();
                 Game.getScenes().remove("gameMenu");
                 EndMenuController.score = GameMenuController.score;
                 EndMenuController.message = "You Win";
-                //TODO save score in database
+                int highScore = UserDatabaseController.getInstance().getScore(GameMenuController.username);
+                if (highScore < GameMenuController.score) {
+                    UserDatabaseController.getInstance().setScore(GameMenuController.username, GameMenuController.score);
+                }
                 EndMenuController.createPane();
             }
         }
