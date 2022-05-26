@@ -35,10 +35,11 @@ public class MainMenuController {
     }
 
     public void showScoreBoard() {
+        HighScoreController.createPane();
     }
 
     public void exit() {
-        exit();
+        System.exit(0);
     }
 
     public void goToSettings() {

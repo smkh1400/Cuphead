@@ -20,25 +20,33 @@ public class ProfileMenuController {
     public Rectangle avatar;
 
     public void changeUsername() {
-        if (username.equals(newUsername.getText())) {
-            message.setText("set a new username");
-        } else if (UserDatabaseController.getInstance().getPasswordWithUsername(newUsername.getText()) != null){
-            message.setText("username already existed");
-        } else {
-            UserDatabaseController.getInstance().changeUsername(username, newUsername.getText());
-            message.setText("username changed successfully");
+        if (username.equals(""))
+            message.setText("you are a guest");
+        else {
+            if (username.equals(newUsername.getText())) {
+                message.setText("set a new username");
+            } else if (UserDatabaseController.getInstance().getPasswordWithUsername(newUsername.getText()) != null){
+                message.setText("username already existed");
+            } else {
+                UserDatabaseController.getInstance().changeUsername(username, newUsername.getText());
+                message.setText("username changed successfully");
+            }
+            username = newUsername.getText();
         }
-        username = newUsername.getText();
         newUsername.setText("");
     }
 
     public void changePassword() {
-        String password = UserDatabaseController.getInstance().getPasswordWithUsername(username);
-        if (password.equals(newPassword.getText())) {
-            message.setText("set a new password");
-        } else {
-            UserDatabaseController.getInstance().changePassword(username, newPassword.getText());
-            message.setText("password changed successfully");
+        if (username.equals(""))
+            message.setText("you are a guest");
+        else {
+            String password = UserDatabaseController.getInstance().getPasswordWithUsername(username);
+            if (password.equals(newPassword.getText())) {
+                message.setText("set a new password");
+            } else {
+                UserDatabaseController.getInstance().changePassword(username, newPassword.getText());
+                message.setText("password changed successfully");
+            }
         }
         newPassword.setText("");
     }
@@ -48,8 +56,12 @@ public class ProfileMenuController {
     }
 
     public void deleteAccount() {
-        UserDatabaseController.getInstance().removeUser(username);
-        this.logout();
+        if (username.equals(""))
+            message.setText("you are a guest");
+        else {
+            UserDatabaseController.getInstance().removeUser(username);
+            this.logout();
+        }
     }
 
     public void backToMainMenu() {

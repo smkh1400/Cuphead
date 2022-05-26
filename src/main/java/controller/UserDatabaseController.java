@@ -1,6 +1,7 @@
 package controller;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import model.User;
 
 
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -100,6 +102,7 @@ public class UserDatabaseController {
                 users.get(i).put("score", String.valueOf(newScore));
             }
         }
+        this.updateDatabase(users);
     }
 
     public void changePassword(String username, String newPassword) {
@@ -119,6 +122,18 @@ public class UserDatabaseController {
                 users.get(i).put("username", newUsername);
         }
         this.updateDatabase(users);
+    }
+
+    public List<User> getDate() {
+        ArrayList<HashMap<String, String>> users = loadDatabase();
+        List<User> data = new ArrayList<>();
+        for (int i = 0; i < users.size(); i++) {
+            User user = new User(users.get(i).get("username"), Integer.parseInt(users.get(i).get("score")));
+            data.add(user);
+        }
+        Collections.sort(data);
+        return data;
+
     }
 
 //    public static User getUserByUsername(String username) {
