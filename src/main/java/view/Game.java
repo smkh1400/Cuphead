@@ -45,7 +45,7 @@ public class Game extends Application {
 
         HBox h = (HBox) profileMenuPane.getTop();
         Rectangle r = (Rectangle) h.getChildren().get(0);
-        r.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/avatar1.png").toExternalForm())));
+        r.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/10.jpg").toExternalForm())));
 
         BorderPane settingsPane = FXMLLoader.load(settingsAddress);
 

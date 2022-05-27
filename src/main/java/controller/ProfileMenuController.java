@@ -70,7 +70,7 @@ public class ProfileMenuController {
 
     public void changeAvatar() {
         Random random = new Random();
-        int a = random.nextInt(3) + 1;
-        this.avatar.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/avatar" + a + ".png").toExternalForm())));
+        int a = random.nextInt(23);
+        this.avatar.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/" + a + ".jpg").toExternalForm())));
     }
 }
