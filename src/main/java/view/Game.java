@@ -33,6 +33,9 @@ public class Game extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        stage.getIcons().add(new Image(getClass().getResource("/view/frames/red.png").toExternalForm()));
+
         Game.stage = stage;
         stage.setTitle("CupHead");
         URL loginMenuAddress = new URL(view.Game.class.getResource("fxml/LoginMenu.fxml").toExternalForm());
@@ -62,9 +65,10 @@ public class Game extends Application {
 
         Media media1 = new Media(new File("src/main/resources/music/music1.mp3").toURI().toString());
         AudioClip audioClip1 = new AudioClip(media1.getSource());
+        audioClip1.setCycleCount(-1);
         Media media2 = new Media(new File("src/main/resources/music/music2.mp3").toURI().toString());
         AudioClip audioClip2 = new AudioClip(media2.getSource());
-
+        audioClip2.setCycleCount(-1);
 
         audios.put("gameMenu", audioClip1);
         audios.put("otherMenu", audioClip2);

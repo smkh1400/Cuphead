@@ -6,10 +6,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.MainMenuController"
             prefHeight="640.0" prefWidth="1080.0" style="-fx-background-color: #4b4b4b" stylesheets="@../CSS/MainMenu.css">
+    <top>
+        <VBox>
+            <Text/>
+            <Text/>
+            <Text/>
+            <Text/>
+            <Text/>
+            <Text/>
+            <Text/>
+            <HBox spacing="10" alignment="CENTER">
+                <Text text="CUP HEAD" textAlignment="CENTER" style="-fx-font-size: 100; -fx-fill: red; -fx-font-family: 'Gabriola'"/>
+            </HBox>
+        </VBox>
+    </top>
+
     <center>
         <VBox spacing="10" alignment="CENTER">
             <Button text="Start new game" onMouseClicked="#startNewGame" />

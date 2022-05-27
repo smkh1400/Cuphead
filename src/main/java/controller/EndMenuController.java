@@ -29,8 +29,20 @@ public class EndMenuController {
         borderPane.setPrefWidth(1080);
         VBox vBox = new VBox();
         Text text = new Text(message);
+        text.setStyle("-fx-font-family: \"Times New Roman\";\n" +
+                "    -fx-font-weight: bold;\n" +
+                "    -fx-font-size: 26;\n" +
+                "    -fx-fill: black;");
         Text scoreText = new Text(String.valueOf(score));
+        scoreText.setStyle("-fx-font-family: \"Times New Roman\";\n" +
+                "    -fx-font-weight: bold;\n" +
+                "    -fx-font-size: 26;\n" +
+                "    -fx-fill: black;");
         Button restart = new Button();
+        restart.setStyle("-fx-font-family: Gabriola;\n" +
+                "    -fx-pref-width: 342;\n" +
+                "    -fx-background-color: #efe4b0;\n" +
+                "    -fx-font-size: 18;");
         restart.setText("restart game");
         restart.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -40,6 +52,10 @@ public class EndMenuController {
         });
 
         Button mainMenu = new Button();
+        mainMenu.setStyle("-fx-font-family: Gabriola;\n" +
+                "    -fx-pref-width: 342;\n" +
+                "    -fx-background-color: #efe4b0;\n" +
+                "    -fx-font-size: 18;");
         mainMenu.setText("back to main menu");
         mainMenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
