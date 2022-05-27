@@ -2,11 +2,16 @@ package transition;
 
 import controller.GameMenuController;
 import javafx.animation.Transition;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import model.Airplane;
 import model.Boss;
 import model.Bullet;
 import model.MiniBoss;
+
+import java.io.File;
 
 public class BulletAnimation extends Transition {
     private Bullet bullet;
@@ -24,6 +29,7 @@ public class BulletAnimation extends Transition {
 
     @Override
     protected void interpolate(double v) {
+
         bullet.setX(bullet.getX() + speed);
         if (Boss.getInstance() != null && bullet.hasCollision(Boss.getInstance()) && !bullet.isDone()) {
             bullet.getPane().getChildren().remove(bullet);

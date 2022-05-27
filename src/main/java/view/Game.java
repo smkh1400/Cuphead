@@ -7,13 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,6 +42,11 @@ public class Game extends Application {
         BorderPane loginMenuPane = FXMLLoader.load(loginMenuAddress);
         BorderPane mainMenuPane = FXMLLoader.load(mainMenuAddress);
         BorderPane profileMenuPane = FXMLLoader.load(profileMenuAddress);
+
+        HBox h = (HBox) profileMenuPane.getTop();
+        Rectangle r = (Rectangle) h.getChildren().get(0);
+        r.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/avatar1.png").toExternalForm())));
+
         BorderPane settingsPane = FXMLLoader.load(settingsAddress);
 
         sPane = settingsPane;

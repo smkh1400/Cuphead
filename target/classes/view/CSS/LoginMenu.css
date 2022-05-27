@@ -1,0 +1,18 @@
+Button {
+    -fx-font-family: Gabriola;
+    -fx-pref-width: 342;
+    -fx-background-color: #efe4b0;
+    -fx-font-size: 18;
+}
+Text {
+    -fx-font-family: "Times New Roman";
+    -fx-font-weight: bold;
+    -fx-font-size: 36;
+    -fx-fill: #efe4b0;
+}
+
+Label {
+    -fx-font-weight: bold;
+    -fx-font-family: Gabriola;
+    -fx-font-size: 18;
+}

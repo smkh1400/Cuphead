@@ -9,10 +9,10 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.MainMenuController"
-            prefHeight="640.0" prefWidth="1080.0">
+            prefHeight="640.0" prefWidth="1080.0" style="-fx-background-color: #4b4b4b" stylesheets="@../CSS/MainMenu.css">
     <center>
         <VBox spacing="10" alignment="CENTER">
-            <Button text="Start new game" onMouseClicked="#startNewGame"/>
+            <Button text="Start new game" onMouseClicked="#startNewGame" />
             <Button text="Profile" onMouseClicked="#openProfile"/>
             <Button text="Scoreboard" onMouseClicked="#showScoreBoard"/>
             <Button text="Settings" onMouseClicked="#goToSettings"/>

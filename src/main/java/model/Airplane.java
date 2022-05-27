@@ -5,10 +5,15 @@ import controller.GameMenuController;
 import controller.UserDatabaseController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import view.Game;
+
+import java.io.File;
 
 public class Airplane extends Rectangle {
 
@@ -91,6 +96,9 @@ public class Airplane extends Rectangle {
 
     public void shoot(Boss boss) {
         if (coolDown) {
+            Media media = new Media(new File("src/main/resources/music/shoot.mp3").toURI().toString());
+            AudioClip audioClip = new AudioClip(media.getSource());
+            audioClip.play();
             coolDown = false;
             Bullet bullet = new Bullet((int) (this.getX() + this.getWidth()), (int) (this.getY() + (this.getHeight() / 2)), pane);
             pane.getChildren().add(bullet);

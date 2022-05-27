@@ -1,0 +1,18 @@
+.type1 {
+    -fx-font-family: Gabriola;
+    -fx-pref-width: 342;
+    -fx-background-color: #efe4b0;
+    -fx-font-size: 18;
+}
+
+.type2 {
+    -fx-font-family: Gabriola;
+    -fx-pref-width: 100;
+    -fx-background-color: #efe4b0;
+    -fx-font-size: 18;
+}
+Label {
+    -fx-font-weight: bold;
+    -fx-font-family: Gabriola;
+    -fx-font-size: 18;
+}

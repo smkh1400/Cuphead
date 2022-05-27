@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -13,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import view.Game;
 
+import java.io.File;
 import java.util.Map;
 
 public class PauseMenuController {
@@ -20,6 +22,7 @@ public class PauseMenuController {
 
     public static void createPane() {
         for (Map.Entry<String, Transition> set : GameMenuController.animations.entrySet()) {
+            if (set.getValue().getStatus().equals(Animation.Status.RUNNING))
             set.getValue().pause();
         }
         BorderPane borderPane = new BorderPane();
@@ -31,6 +34,10 @@ public class PauseMenuController {
         hBox.setSpacing(10);
 
         Button resume = new Button();
+        resume.setStyle("-fx-font-family: Gabriola;\n" +
+                "    -fx-pref-width: 342;\n" +
+                "    -fx-background-color: #efe4b0;\n" +
+                "    -fx-font-size: 18;");
         resume.setText("resume");
         resume.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -40,9 +47,13 @@ public class PauseMenuController {
         });
 
         Label label = new Label();
+        label.setStyle("-fx-font-weight: bold;\n" +
+                "    -fx-font-family: Gabriola;\n" +
+                "    -fx-font-size: 18;");
         label.setText("sound");
 
         CheckBox checkBox = new CheckBox();
+        checkBox.setStyle("-fx-font-family: Gabriola");
         checkBox.setText("on");
         checkBox.setSelected(Game.isAudioOn);
         checkBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -60,6 +71,10 @@ public class PauseMenuController {
         hBox.getChildren().add(checkBox);
 
         Button restartGame = new Button();
+        restartGame.setStyle("-fx-font-family: Gabriola;\n" +
+                "    -fx-pref-width: 342;\n" +
+                "    -fx-background-color: #efe4b0;\n" +
+                "    -fx-font-size: 18;");
         restartGame.setText("restart game");
         restartGame.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -69,6 +84,10 @@ public class PauseMenuController {
         });
 
         Button backToMainMenu = new Button();
+        backToMainMenu.setStyle("-fx-font-family: Gabriola;\n" +
+                "    -fx-pref-width: 342;\n" +
+                "    -fx-background-color: #efe4b0;\n" +
+                "    -fx-font-size: 18;");
         backToMainMenu.setText("back to main menu");
         backToMainMenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -87,6 +106,7 @@ public class PauseMenuController {
 
 
         Scene pauseScene = new Scene(borderPane);
+
         Game.addScene("pauseMenu", pauseScene);
         Game.setScene("pauseMenu");
     }
@@ -102,6 +122,7 @@ public class PauseMenuController {
 
     public static void resume() {
         for(Map.Entry<String , Transition> set: GameMenuController.animations.entrySet()) {
+            if (set.getValue().getStatus().equals(Animation.Status.PAUSED))
             set.getValue().play();
         }
         Game.setScene("gameMenu");

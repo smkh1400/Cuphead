@@ -10,18 +10,18 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.LoginMenuController"
-            prefHeight="640.0" prefWidth="1080.0">
+            prefHeight="640.0" prefWidth="1080.0" style="-fx-background-color: gray" stylesheets="@../CSS/LoginMenu.css">
     <center>
         <VBox spacing="10" alignment="CENTER" maxWidth="330">
-            <Text id="title" text="Welcome!"/>
+            <Text id="title" text="Welcome!" style="-fx-text-fill: blue"/>
             <Label text="Username"/>
             <TextField fx:id="username" promptText="enter your username"/>
             <Label text="password"/>
             <TextField fx:id="password" promptText="enter your password"/>
-            <Button styleClass="primary-btn" text="Login" onMouseClicked="#loginPlayer"/>
-            <Button styleClass="secondary-btn" text="Register" onMouseClicked="#registerPlayer"/>
-            <Button styleClass="third-btn" text="Play As Guest" onMouseClicked="#playAsGuest"/>
-            <Label fx:id="message" text=""/>
+            <Button text="Login" onMouseClicked="#loginPlayer" />
+            <Button text="Register" onMouseClicked="#registerPlayer"/>
+            <Button text="Play As Guest" onMouseClicked="#playAsGuest"/>
+            <Label fx:id="message" text="" style="-fx-text-fill: red"/>
         </VBox>
     </center>
 
