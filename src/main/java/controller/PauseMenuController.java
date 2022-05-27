@@ -37,7 +37,7 @@ public class PauseMenuController {
         resume.setStyle("-fx-font-family: Gabriola;\n" +
                 "    -fx-pref-width: 342;\n" +
                 "    -fx-background-color: #efe4b0;\n" +
-                "    -fx-font-size: 18;");
+                "    -fx-font-size: 24;");
         resume.setText("resume");
         resume.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -49,11 +49,11 @@ public class PauseMenuController {
         Label label = new Label();
         label.setStyle("-fx-font-weight: bold;\n" +
                 "    -fx-font-family: Gabriola;\n" +
-                "    -fx-font-size: 18;");
+                "    -fx-font-size: 20;");
         label.setText("sound");
 
         CheckBox checkBox = new CheckBox();
-        checkBox.setStyle("-fx-font-family: Gabriola");
+        checkBox.setStyle("-fx-font-family: Gabriola; -fx-font-size: 22");
         checkBox.setText("on");
         checkBox.setSelected(Game.isAudioOn);
         checkBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -74,7 +74,7 @@ public class PauseMenuController {
         restartGame.setStyle("-fx-font-family: Gabriola;\n" +
                 "    -fx-pref-width: 342;\n" +
                 "    -fx-background-color: #efe4b0;\n" +
-                "    -fx-font-size: 18;");
+                "    -fx-font-size: 24;");
         restartGame.setText("restart game");
         restartGame.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -87,7 +87,7 @@ public class PauseMenuController {
         backToMainMenu.setStyle("-fx-font-family: Gabriola;\n" +
                 "    -fx-pref-width: 342;\n" +
                 "    -fx-background-color: #efe4b0;\n" +
-                "    -fx-font-size: 18;");
+                "    -fx-font-size: 24;");
         backToMainMenu.setText("back to main menu");
         backToMainMenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

@@ -52,26 +52,20 @@ public class HighScoreController {
             hBox.setAlignment(Pos.CENTER);
             hBox.setSpacing(100);
             Text name = new Text();
-            name.setStyle("-fx-font-family: \"Times New Roman\";\n" +
-                    "    -fx-font-weight: bold;\n" +
-                    "    -fx-font-size: 26;\n" +
-                    "    -fx-fill: black;");
+            name.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: black");
             name.setText(data.get(i).getUsername());
             Text scoreText = new Text();
-            scoreText.setStyle("-fx-font-family: \"Times New Roman\";\n" +
-                    "    -fx-font-weight: bold;\n" +
-                    "    -fx-font-size: 26;\n" +
-                    "    -fx-fill: black;");
+            scoreText.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: black");
             scoreText.setText(String.valueOf(data.get(i).getScore()));
             if (i == 0) {
-                name.setStyle("-fx-fill: gold");
-                scoreText.setStyle("-fx-fill: gold");
+                name.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: gold");
+                scoreText.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: gold");
             } else if (i == 1) {
-                name.setStyle("-fx-fill: silver");
-                scoreText.setStyle("-fx-fill: silver");
+                name.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: silver");
+                scoreText.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: silver");
             } else if (i == 2) {
-                name.setStyle("-fx-fill: #B08D57");
-                scoreText.setStyle("-fx-fill: #B08D57");
+                name.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: #B08D57");
+                scoreText.setStyle("-fx-font-family: Gabriola; -fx-font-weight: bold; -fx-font-size: 26; -fx-fill: #B08D57");
             }
             hBox.getChildren().add(name);
             hBox.getChildren().add(scoreText);
@@ -82,7 +76,7 @@ public class HighScoreController {
         backToMainMenu.setStyle("-fx-font-family: Gabriola;\n" +
                 "    -fx-pref-width: 342;\n" +
                 "    -fx-background-color: #efe4b0;\n" +
-                "    -fx-font-size: 18;");
+                "    -fx-font-size: 22;");
         backToMainMenu.setText("back to main menu");
         backToMainMenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

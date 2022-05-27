@@ -18,6 +18,10 @@ public class ExplosionAnimation extends Transition {
     @Override
     protected void interpolate(double v) {
         int frame = (int) Math.floor(v * 2) + 1;
-        explosion.setBackGround("../resources/transition/Explosion/boom" + frame + ".png");
+        explosion.setBackGround("/transition/Explosion/boom" + frame + ".png");
+        if (v == 1) {
+            if (Boss.getInstance() != null )
+                Boss.getInstance().getPane().getChildren().remove(explosion);
+        }
     }
 }

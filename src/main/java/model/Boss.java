@@ -50,7 +50,7 @@ public class Boss extends Rectangle {
 
     public boolean moveUp() {
         if (!this.hitUp()) {
-            this.setY(this.getY() - 2);
+            this.setY(this.getY() - 4);
             return true;
         }
         return false;
@@ -58,7 +58,7 @@ public class Boss extends Rectangle {
 
     public boolean moveDown() {
         if (!this.hitDown()) {
-            this.setY(this.getY() + 2);
+            this.setY(this.getY() + 4);
             return true;
         }
         return false;
@@ -77,7 +77,7 @@ public class Boss extends Rectangle {
     }
 
     public void shootEgg(int x, int y) {
-        Egg egg = new Egg(x,y);// TODO find place of the start of shooting
+        Egg egg = new Egg(x,y);
         pane.getChildren().add(egg);
         egg.shoot();
     }
@@ -91,9 +91,10 @@ public class Boss extends Rectangle {
     }
 
     public void getHit() {
-        Media media = new Media(new File("src/main/resources/music/boom.mp3").toURI().toString());
+        Media media = new Media(new File("src/main/resources/music/boom.wav").toURI().toString());
         AudioClip audioClip = new AudioClip(media.getSource());
         audioClip.play();
+
         GameMenuController.score += 5;
         GameMenuController.updateScore();
         this.health -= (Airplane.getInstance().getDamagePercentage()) / 100;

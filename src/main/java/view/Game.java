@@ -4,6 +4,8 @@ import controller.GameMenuController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -66,6 +68,8 @@ public class Game extends Application {
         Scene mainMenuScene = new Scene(mainMenuPane);
         Scene profileMenuScene = new Scene(profileMenuPane);
         Scene settingsScene = new Scene(settingsPane);
+
+
         scenes.put("loginMenu", loginMenuScene);
         scenes.put("mainMenu", mainMenuScene);
         scenes.put("profileMenu", profileMenuScene);
@@ -93,6 +97,11 @@ public class Game extends Application {
             }
         }
         Scene currentMenu = scenes.get(menuName);
+
+        Image image = new Image(Game.class.getResource("/transition/MiniBoss/1.png").toExternalForm());
+
+        currentMenu.setCursor(new ImageCursor(image));
+
         stage.setScene(currentMenu);
         stage.show();
     }

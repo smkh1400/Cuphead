@@ -2,7 +2,7 @@ Button {
     -fx-font-family: Gabriola;
     -fx-pref-width: 342;
     -fx-background-color: #efe4b0;
-    -fx-font-size: 18;
+    -fx-font-size: 20;
 }
 Text {
     -fx-font-family: "Times New Roman";
@@ -14,5 +14,5 @@ Text {
 Label {
     -fx-font-weight: bold;
     -fx-font-family: Gabriola;
-    -fx-font-size: 18;
+    -fx-font-size: 20;
 }

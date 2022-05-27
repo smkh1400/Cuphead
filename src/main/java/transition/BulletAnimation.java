@@ -20,7 +20,7 @@ public class BulletAnimation extends Transition {
         this.bullet = bullet;
         setCycleDuration(Duration.millis(3000));
         setCycleCount(1);
-        this.speed = 10;
+        this.speed = 20;
         this.resetCoolDown = false;
     }
 
@@ -31,7 +31,9 @@ public class BulletAnimation extends Transition {
         if (Boss.getInstance() != null && bullet.hasCollision(Boss.getInstance()) && !bullet.isDone()) {
             bullet.getPane().getChildren().remove(bullet);
             bullet.done();
-            ExplosionAnimation explosionAnimation = new ExplosionAnimation(new Explosion(bullet.getX(), bullet.getY()));
+            Explosion explosion = new Explosion(bullet.getX(), bullet.getY());
+            Boss.getInstance().getPane().getChildren().add(explosion);
+            ExplosionAnimation explosionAnimation = new ExplosionAnimation(explosion);
             explosionAnimation.play();
             Boss.getInstance().getHit();
             Boss.getInstance().updateHealthBarLength();

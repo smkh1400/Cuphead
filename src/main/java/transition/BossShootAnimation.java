@@ -11,7 +11,7 @@ public class BossShootAnimation extends Transition {
     private boolean shooted;
 
     public BossShootAnimation() {
-        setCycleDuration(Duration.millis(1000));//TODO configure number
+        setCycleDuration(Duration.millis(1000));
         setCycleCount(1);
         this.shooted = false;
     }

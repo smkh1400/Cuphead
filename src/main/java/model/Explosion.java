@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 public class Explosion extends Rectangle {
 
     public Explosion(double x, double y) {
-        super(200,180, x, y);
+        super(x + 50, y - 90, 200, 180);
     }
 
     public void setBackGround(String URL) {

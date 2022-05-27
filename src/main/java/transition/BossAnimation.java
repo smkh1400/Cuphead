@@ -15,7 +15,7 @@ public class BossAnimation extends Transition {
 
     public BossAnimation() {
         this.direction = 1;
-        setCycleDuration(Duration.millis(1000));//TODO configure number
+        setCycleDuration(Duration.millis(1000));
         setCycleCount(-1);
     }
 
@@ -26,9 +26,10 @@ public class BossAnimation extends Transition {
 
         if (Boss.getInstance() != null && Airplane.getInstance() != null) {
             if (Boss.getInstance().hasCollision(Airplane.getInstance()))
-                Airplane.getInstance().getHit(); // TODO set cool down for it
+                Airplane.getInstance().getHit();
         }
         if (Boss.getInstance() != null && Airplane.getInstance() != null) {
+
 
             if (Boss.getInstance().getShootCoolDown() == 5) {
                 Boss.getInstance().setShootCoolDown(0);
@@ -65,8 +66,9 @@ public class BossAnimation extends Transition {
         }
 
         if (v == 1) {
-            if (Boss.getInstance() != null)
+            if (Boss.getInstance() != null) {
                 Boss.getInstance().setShootCoolDown(Boss.getInstance().getShootCoolDown() + 1);
+            }
         }
     }
 }

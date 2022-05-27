@@ -10,7 +10,7 @@ import model.Egg;
 
 public class EggAnimation extends Transition {
 
-    private Pane pane = Boss.getInstance().getPane(); // TODO find better way to find pane to remove egg
+    private Pane pane = Boss.getInstance().getPane();
     private Egg egg;
     private int speed;
 
@@ -19,7 +19,7 @@ public class EggAnimation extends Transition {
         this.egg = egg;
         setCycleDuration(Duration.millis(10));
         setCycleCount(-1);
-        this.speed = 1;
+        this.speed = 3;
 
     }
 
@@ -32,10 +32,6 @@ public class EggAnimation extends Transition {
             pane.getChildren().remove(egg);
             egg.done();
             Airplane.getInstance().getHit();
-        }
-
-        if (v == 1) {
-            //TODO destroy egg if needed
         }
     }
 }

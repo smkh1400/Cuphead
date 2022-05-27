@@ -27,8 +27,6 @@ import java.util.Map;
 
 public class GameMenuController {
 
-    //TODO make this class singleton
-
     public static HashMap<String, Transition> animations = new HashMap<>();
 
     public static String username;
@@ -66,6 +64,7 @@ public class GameMenuController {
         pane.setPrefWidth(1080);
         Text heartText = new Text();
         heartText.setText("x" + hearts);
+        heartText.setStyle("-fx-font-size: 20");
         heartText.setX(60);
         heartText.setY(630);
 
@@ -104,12 +103,13 @@ public class GameMenuController {
         healthBar.setStyle("-fx-fill: red");
 
         Text healthText = new Text();
-        healthText.setX(650);
-        healthText.setY(630);
+        healthText.setX(520);
+        healthText.setY(600);
+        healthText.setStyle("-fx-font-weight: bold; -fx-font-size: 24");
         healthText.setText(String.valueOf(25));
 
 
-        Boss.updateInstance(25, pane, healthBar, healthText);//TODO configure numbers
+        Boss.updateInstance(25, pane, healthBar, healthText);
         Boss boss = Boss.getInstance();
         BossAnimation bossAnimation = new BossAnimation();
         bossAnimation.play();
