@@ -6,10 +6,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import model.Airplane;
-import model.Boss;
-import model.Bullet;
-import model.MiniBoss;
+import model.*;
 
 import java.io.File;
 
@@ -34,6 +31,8 @@ public class BulletAnimation extends Transition {
         if (Boss.getInstance() != null && bullet.hasCollision(Boss.getInstance()) && !bullet.isDone()) {
             bullet.getPane().getChildren().remove(bullet);
             bullet.done();
+            ExplosionAnimation explosionAnimation = new ExplosionAnimation(new Explosion(bullet.getX(), bullet.getY()));
+            explosionAnimation.play();
             Boss.getInstance().getHit();
             Boss.getInstance().updateHealthBarLength();
         }

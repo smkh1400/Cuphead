@@ -3,11 +3,15 @@ package model;
 import controller.GameMenuController;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import transition.BossAnimation;
 import transition.BossShootAnimation;
+
+import java.io.File;
 
 
 public class Boss extends Rectangle {
@@ -87,6 +91,9 @@ public class Boss extends Rectangle {
     }
 
     public void getHit() {
+        Media media = new Media(new File("src/main/resources/music/boom.mp3").toURI().toString());
+        AudioClip audioClip = new AudioClip(media.getSource());
+        audioClip.play();
         GameMenuController.score += 5;
         GameMenuController.updateScore();
         this.health -= (Airplane.getInstance().getDamagePercentage()) / 100;
