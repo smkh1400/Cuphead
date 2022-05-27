@@ -44,10 +44,18 @@ public class Game extends Application {
         URL settingsAddress = new URL(view.Game.class.getResource("fxml/settings.fxml").toExternalForm());
         BorderPane loginMenuPane = FXMLLoader.load(loginMenuAddress);
         BorderPane mainMenuPane = FXMLLoader.load(mainMenuAddress);
+
+        VBox v = (VBox) mainMenuPane.getTop();
+        HBox h = (HBox) v.getChildren().get(7);
+        Rectangle r1 = (Rectangle) h.getChildren().get(0);
+        r1.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/red.png").toExternalForm())));
+        Rectangle r2 = (Rectangle) h.getChildren().get(2);
+        r2.setFill(new ImagePattern(new Image(getClass().getResource("/transition/Boss/1.png").toExternalForm())));
+
         BorderPane profileMenuPane = FXMLLoader.load(profileMenuAddress);
 
-        HBox h = (HBox) profileMenuPane.getTop();
-        Rectangle r = (Rectangle) h.getChildren().get(0);
+        HBox h1 = (HBox) profileMenuPane.getTop();
+        Rectangle r = (Rectangle) h1.getChildren().get(0);
         r.setFill(new ImagePattern(new Image(getClass().getResource("/view/frames/avatars/10.jpg").toExternalForm())));
 
         BorderPane settingsPane = FXMLLoader.load(settingsAddress);
